@@ -5,10 +5,6 @@ export interface FunctionMatrix {
   getFunc: (id: string) => BinaryFunc | UnaryFunc;
 }
 
-export interface Tokenizer {
-  tokenize: (input: string) => string[];
-}
-
 export class DefaultFunctions {
   getFunc(id: string) {
     switch (id) {
@@ -30,23 +26,15 @@ export class DefaultFunctions {
   }
 }
 
-export class TokenizerImpl {
-  tokenize(input: string) {
-    return input.split(' ');
-  }
-}
-
 export class Calculator {
   functions: FunctionMatrix;
-  tokenizer: Tokenizer;
 
-  constructor(functions: FunctionMatrix, tokenizer: Tokenizer) {
+  constructor(functions: FunctionMatrix) {
     this.functions = functions;
-    this.tokenizer = tokenizer;
   }
 
   run(input: string): number {
-    const tokens = this.tokenizer.tokenize(input);
+    const tokens = input.split(' ');
     if (tokens.length < 1) return NaN;
 
     const fn = this.functions.getFunc(tokens[0]);

@@ -1,6 +1,6 @@
 import kleur from 'kleur';
 import readline from 'readline';
-import { Calculator, DefaultFunctions, TokenizerImpl } from './calculator';
+import { Calculator, DefaultFunctions } from './calculator';
 
 const main = async () => {
   const rl = readline.createInterface({
@@ -12,8 +12,7 @@ const main = async () => {
     new Promise(resolve => rl.question(query, resolve));
 
   const fnm = new DefaultFunctions();
-  const tok = new TokenizerImpl();
-  const calculator = new Calculator(fnm, tok);
+  const calculator = new Calculator(fnm);
 
   console.log(
     `Enter an expression (${kleur.dim().yellow('h')} for help, ${kleur.dim().yellow('ctrl+d')} to exit)`,
