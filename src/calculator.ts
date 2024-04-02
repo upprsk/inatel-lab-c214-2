@@ -35,13 +35,14 @@ export class Calculator {
 
   run(input: string): number {
     const tokens = input.split(' ');
-    if (tokens.length < 1) return NaN;
+    if (tokens.length < 1 || tokens[0] === '') return NaN;
 
     const fn = this.functions.getFunc(tokens[0]);
-    const arity = fn.length + 1;
-    if (arity != tokens.length) {
+    const arity = fn.length;
+    const argCount = tokens.length - 1;
+    if (arity != argCount) {
       throw new Error(
-        `Invalid arity for function, expected ${arity}, got ${tokens.length}`,
+        `Invalid arity for function, expected ${arity}, got ${argCount}`,
       );
     }
 
