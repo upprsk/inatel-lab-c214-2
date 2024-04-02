@@ -1,0 +1,14 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "standard",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "semi": "off",
+    "comma-dangle": "off",
+    "space-before-function-paren": "off"
+  }
+}
